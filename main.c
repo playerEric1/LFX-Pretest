@@ -16,12 +16,15 @@ static void printWrongArgs()
 
 static void printWrongInt()
 {
-    printf("Wrong argument: both arguments must be integers. \n");
+    printf("Wrong argument: both arguments must be valid integers. \n");
 }
 
 /* Check if all characters in a string are integers. */
 static bool intCheck(const char *str)
 {
+    if (sizeof(str) > __SIZEOF_INT__)
+        return false;
+
     for (char character = *str; character != '\0'; character = *++str)
     {
         if (character < '0' || character > '9')
